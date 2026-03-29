@@ -1,3 +1,9 @@
+pre-commit:
+  commands:
+    lint-fix:
+      glob: "*.{ts,tsx,json,css}"
+      run: npx biome check --write {staged_files} && git add {staged_files}
+
 pre-push:
   parallel: true
   commands:
