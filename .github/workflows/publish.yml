@@ -30,6 +30,8 @@ jobs:
 
       - run: pnpm build
 
+      - run: pnpm test
+
       - name: Check if version changed
         id: version
         run: |
