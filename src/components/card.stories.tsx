@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Button } from "./button";
 import {
 	Card,
@@ -62,6 +62,38 @@ export const Simple: Story = {
 			</CardHeader>
 			<CardContent>
 				<p>Just a header and content, no footer.</p>
+			</CardContent>
+		</Card>
+	),
+};
+
+export const Spotlight: Story = {
+	render: () => (
+		<Card spotlight style={{ maxWidth: "400px" }}>
+			<CardHeader>
+				<CardTitle>Spotlight Card</CardTitle>
+				<CardDescription>Hover to see the spotlight effect.</CardDescription>
+			</CardHeader>
+			<CardContent>
+				<p>The spotlight follows your cursor.</p>
+			</CardContent>
+		</Card>
+	),
+};
+
+export const SpotlightCustomColor: Story = {
+	render: () => (
+		<Card
+			spotlight
+			spotlightColor="rgba(249, 115, 22, 0.25)"
+			style={{ maxWidth: "400px" }}
+		>
+			<CardHeader>
+				<CardTitle>Custom Color</CardTitle>
+				<CardDescription>Orange spotlight effect.</CardDescription>
+			</CardHeader>
+			<CardContent>
+				<p>Using a custom spotlight color.</p>
 			</CardContent>
 		</Card>
 	),

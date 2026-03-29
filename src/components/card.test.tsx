@@ -1,4 +1,4 @@
-import { cleanup, render, screen } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
 import {
 	Card,
@@ -63,5 +63,49 @@ describe("Card", () => {
 			"text-muted-foreground",
 			"text-sm",
 		);
+	});
+
+	it("does not render spotlight overlay by default", () => {
+		render(<Card data-testid="card">Content</Card>);
+		const card = screen.getByTestId("card");
+		expect(card.querySelector(".pointer-events-none")).toBeNull();
+	});
+
+	it("renders spotlight overlay when spotlight is true", () => {
+		render(
+			<Card data-testid="card" spotlight>
+				Content
+			</Card>,
+		);
+		const card = screen.getByTestId("card");
+		expect(card.querySelector(".pointer-events-none")).toBeInTheDocument();
+	});
+
+	it("shows spotlight on mouse enter", () => {
+		render(
+			<Card data-testid="card" spotlight>
+				Content
+			</Card>,
+		);
+		const card = screen.getByTestId("card");
+		const spotlight = card.querySelector(".pointer-events-none");
+
+		expect(spotlight).toHaveStyle({ opacity: "0" });
+		fireEvent.mouseEnter(card);
+		expect(spotlight).toHaveStyle({ opacity: "0.6" });
+	});
+
+	it("hides spotlight on mouse leave", () => {
+		render(
+			<Card data-testid="card" spotlight>
+				Content
+			</Card>,
+		);
+		const card = screen.getByTestId("card");
+		const spotlight = card.querySelector(".pointer-events-none");
+
+		fireEvent.mouseEnter(card);
+		fireEvent.mouseLeave(card);
+		expect(spotlight).toHaveStyle({ opacity: "0" });
 	});
 });

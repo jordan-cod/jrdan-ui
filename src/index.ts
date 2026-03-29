@@ -19,7 +19,18 @@ export {
 	CardDescription,
 	CardContent,
 } from "./components/card";
-export { SpotlightCard } from "./components/spotlight-card";
-export type { SpotlightCardProps } from "./components/spotlight-card";
 export { Typography, typographyVariants } from "./components/typography";
+export {
+	Select,
+	SelectContent,
+	SelectGroup,
+	SelectItem,
+	SelectLabel,
+	SelectScrollDownButton,
+	SelectScrollUpButton,
+	SelectSeparator,
+	SelectTrigger,
+	selectTriggerVariants,
+	SelectValue,
+} from "./components/select";
 export { cn } from "./lib/utils";
