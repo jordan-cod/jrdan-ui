@@ -49,7 +49,7 @@ function Card({
 			onMouseEnter={spotlight ? () => setOpacity(0.6) : undefined}
 			onMouseLeave={spotlight ? () => setOpacity(0) : undefined}
 			className={cn(
-				"bg-card text-card-foreground flex flex-col gap-6 rounded-xl border border-b-[3px] border-black/30 dark:border-white/30 py-6 shadow-sm",
+				"bg-card text-card-foreground flex flex-col gap-6 rounded-md border border-b-[3px] border-black/30 dark:border-white/30 py-6 shadow-sm",
 				spotlight && "relative overflow-hidden",
 				className,
 			)}
