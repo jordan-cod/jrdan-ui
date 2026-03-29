@@ -1,7 +1,9 @@
-name: Build & Publish
+name: Publish
 
 on:
-  push:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
     branches: [main]
 
 permissions:
@@ -11,10 +13,9 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push' }}
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - uses: pnpm/action-setup@v4
         with:
@@ -29,8 +30,6 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - run: pnpm build
-
-      - run: pnpm test
 
       - name: Check if version changed
         id: version
