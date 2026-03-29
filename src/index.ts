@@ -33,4 +33,7 @@ export {
 	selectTriggerVariants,
 	SelectValue,
 } from "./components/select";
+export { Input } from "./components/input";
+export { Label } from "./components/label";
+export { Textarea } from "./components/textarea";
 export { cn } from "./lib/utils";

@@ -6,7 +6,12 @@ export default defineConfig({
 	dts: true,
 	sourcemap: true,
 	clean: true,
-	external: ["react", "react-dom", "@radix-ui/react-select"],
+	external: [
+		"react",
+		"react-dom",
+		"@radix-ui/react-select",
+		"@radix-ui/react-label",
+	],
 	banner: {
 		js: '"use client";',
 	},
